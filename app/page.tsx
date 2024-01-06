@@ -4,6 +4,7 @@ import React from 'react';
 import PokemonDetail from './ui/PokemonDetail';
 import Providers from './lib/api/Provider';
 import PokemonList from './ui/PokemonList';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
    const [selectedPokemon, selectPokemon] = React.useState<string | undefined>(
@@ -20,8 +21,15 @@ export default function Home() {
          <div className="flex ">
             {selectedPokemon ? (
                <>
-                  <PokemonDetail pokemonName={selectedPokemon} />
-                  <button onClick={() => selectPokemon(undefined)}>back</button>
+                  <div className="flex flex-col px-4 py-4 text-2xl">
+                     <PokemonDetail pokemonName={selectedPokemon} />
+                     <Button
+                        className="text-xl justify-center items-center mt-4 "
+                        onClick={() => selectPokemon(undefined)}
+                     >
+                        back
+                     </Button>
+                  </div>
                </>
             ) : (
                <PokemonList onPokemonSelected={selectPokemon} />
